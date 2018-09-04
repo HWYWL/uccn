@@ -5,12 +5,12 @@
 一个简洁的公司官网主页,使用spring boot作为后台框架.
 
 #### 软件架构
-后台框架:Spring Boot 2.0.3.RELEASE
-缓存:Redis
-文件系统:FastDFS
-连接池:druid
-数据库:MySQL
-数据库操作框架:mybatis
+- 后台框架:Spring Boot 2.0.3.RELEASE
+- 缓存:Redis
+- 文件系统:FastDFS
+- 连接池:druid
+- 数据库:MySQL
+- 数据库操作框架:mybatis
 
 
 #### 安装教程
