@@ -15,7 +15,7 @@
 
 #### 安装教程
 
-FastDFS因为安装比较麻烦所以我使用docker安装,一下是安装教程:
+FastDFS因为安装比较麻烦所以我使用docker安装,下面是安装教程:
 
 [FastDFS安装](https://hwy.ac.cn/post/c91g3b0dgngp.html)
 
