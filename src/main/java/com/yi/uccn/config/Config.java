@@ -18,17 +18,12 @@ public class Config {
     public static final String USER_REDIS_SESSION = "user_redis_session";
 
     /**
+     * sm图床上传地址
+     */
+    public static final String SM_URL = "https://sm.ms/api/upload";
+
+    /**
      * redis token超时时间（ms）
      */
     public static final int REDIS_TIMEOUT = 1000 * 60 * 30;
-
-    /**
-     * 文件服务器访问地址
-     */
-    public static String trackerIp;
-
-    @Value("${fast.tracker.ip}")
-    public void setTrackerIp(String trackerIp) {
-        Config.trackerIp = trackerIp;
-    }
 }

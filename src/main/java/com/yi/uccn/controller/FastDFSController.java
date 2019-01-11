@@ -1,12 +1,10 @@
 package com.yi.uccn.controller;
 
-import cn.hutool.core.util.CharUtil;
-import com.yi.uccn.config.Config;
 import com.yi.uccn.model.Banner;
-import com.yi.uccn.model.FastDFSFile;
+import com.yi.uccn.model.Sm;
 import com.yi.uccn.service.BannerService;
-import com.yi.uccn.utils.FastDFSClientUtil;
 import com.yi.uccn.utils.MessageResult;
+import com.yi.uccn.utils.SmUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 
 /**
@@ -50,11 +46,16 @@ public class FastDFSController {
         }
 
         try {
-            String path = saveFile(file);
-            map.put("data", path);
-            banner.setImgOptions(path);
+//            String path = saveFile(file);
+            Sm sm = SmUtil.saveFile(file, false, "json");
+            if (sm.getCode().equals("success")){
+                map.put("data", sm.getData().getUrl());
+                banner.setImgOptions(sm.getData().getUrl());
 
-            bannerService.saveSelective(banner);
+                bannerService.saveSelective(banner);
+            }else {
+                messageResult = MessageResult.errorMsg("上传失败！" + sm.getMsg());
+            }
         } catch (Exception e) {
             logger.error("上传失败！", e);
             messageResult = MessageResult.errorMsg("上传失败！" + e.getMessage());
@@ -80,8 +81,12 @@ public class FastDFSController {
         }
 
         try {
-            String path = saveFile(file);
-            map.put("data", path);
+            Sm sm = SmUtil.saveFile(file, false, "json");
+            if (sm.getCode().equals("success")){
+                map.put("data", sm.getData().getUrl());
+            }else {
+                messageResult = MessageResult.errorMsg("上传失败！" + sm.getMsg());
+            }
 
         } catch (Exception e) {
             logger.error("上传失败！", e);
@@ -90,47 +95,5 @@ public class FastDFSController {
         messageResult.setData(map);
 
         return messageResult;
-    }
-
-    /**
-     * @param multipartFile 文件
-     * @return
-     * @throws IOException
-     */
-    public String saveFile(MultipartFile multipartFile) throws IOException {
-        String[] fileAbsolutePath={};
-        byte[] file_buff = null;
-
-        String fileName = multipartFile.getOriginalFilename();
-        String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
-        InputStream inputStream = multipartFile.getInputStream();
-
-        if(inputStream != null){
-            int len1 = inputStream.available();
-            file_buff = new byte[len1];
-            inputStream.read(file_buff);
-        }
-
-        inputStream.close();
-        FastDFSFile file = new FastDFSFile(fileName, file_buff, ext);
-
-        try {
-            fileAbsolutePath = FastDFSClientUtil.upload(file);
-        } catch (Exception e) {
-            logger.error("文件上传异常!", e);
-        }
-
-        if (fileAbsolutePath==null) {
-            logger.error("上传文件失败，请再次上传!");
-        }
-
-        StringBuffer buffer = new StringBuffer();
-//        buffer.append(FastDFSClientUtil.getTrackerUrl());
-        buffer.append(Config.trackerIp);
-        buffer.append(fileAbsolutePath[0]);
-        buffer.append(CharUtil.SLASH);
-        buffer.append(fileAbsolutePath[1]);
-
-        return buffer.toString();
     }
 }
