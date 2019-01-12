@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * 用户
+ * @author YI
+ * @date 2019-1-12 11:15:42
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
