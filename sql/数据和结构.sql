@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : MySQL
+Source Server         : 本地数据库
 Source Server Version : 50720
 Source Host           : localhost:3306
 Source Database       : uccn
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-08-29 23:59:47
+Date: 2019-01-18 17:43:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,7 +46,7 @@ CREATE TABLE `banner` (
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `create_time` (`create_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='首页banner';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='首页banner';
 
 -- ----------------------------
 -- Records of banner
@@ -55,6 +55,10 @@ INSERT INTO `banner` VALUES ('1', 'http://192.168.99.100:8888/group1/M00/00/00/w
 INSERT INTO `banner` VALUES ('2', 'http://192.168.99.100:8888/group1/M00/00/00/wKhjZFuGncmANef0AACkKLuZjkA705.jpg', '0', '2018-08-29 21:20:54');
 INSERT INTO `banner` VALUES ('3', 'http://192.168.99.100:8888/group1/M00/00/00/wKhjZFuGpaKAcZM6AAUO-685wQA488.jpg', '0', '2018-08-29 21:54:23');
 INSERT INTO `banner` VALUES ('4', 'http://192.168.99.100:8888/group1/M00/00/00/wKhjZFuGpaKAGYBrAAUCJkHsshU384.jpg', '0', '2018-08-29 21:54:23');
+INSERT INTO `banner` VALUES ('5', 'https://i.loli.net/2019/01/11/5c37ffeea3fa9.jpg', '0', '2019-01-11 10:31:09');
+INSERT INTO `banner` VALUES ('6', 'https://i.loli.net/2019/01/11/5c37ffeea4f28.jpg', '0', '2019-01-11 10:31:09');
+INSERT INTO `banner` VALUES ('7', 'https://i.loli.net/2019/01/11/5c380184c3452.jpg', '0', '2019-01-11 10:37:55');
+INSERT INTO `banner` VALUES ('8', 'https://i.loli.net/2019/01/11/5c380184d5743.jpg', '0', '2019-01-11 10:37:55');
 
 -- ----------------------------
 -- Table structure for contact
