@@ -60,7 +60,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>4.1.18</version>
+            <version>4.5.0</version>
         </dependency>
 
         <!-- 引入 redis 依赖 -->
