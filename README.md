@@ -1,6 +1,8 @@
 # uccn
 一个简洁的官网
 
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu) [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+
 #### 项目介绍
 一个简洁的公司官网主页,使用spring boot作为后台框架.
 
